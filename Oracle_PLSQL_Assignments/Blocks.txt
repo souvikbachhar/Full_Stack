@@ -1,0 +1,127 @@
+1---------------------------------------------------------------------------------
+
+2---------------------------------------------------------------------------------
+
+declare
+var1 varchar(100);
+i integer;
+Begin
+FOR i IN 1..50 LOOP
+select to_char(to_date(i,'J'),'jsp') into var1 from dual;
+dbms_output.put_line(i ||' Value: '||var1);
+END LOOP;
+END;
+
+3---------------------------------------------------------------------------------
+
+declare
+var1 varchar(100);
+Begin
+select ENAME into var1 from employee where SALARY >3000;
+dbms_output.put_line('Name: '||var1);
+END;
+
+4---------------------------------------------------------------------------------
+
+declare
+var1 varchar(100);
+var2 varchar(100);
+num1 number;
+Begin
+num1:=&num1;
+select deptname,deptlocation into var1,var2 from department where deptno =num1;
+dbms_output.put_line('Name: '||var1);
+dbms_output.put_line('Location: '||var2);
+EXCEPTION 
+   WHEN no_data_found THEN 
+      dbms_output.put_line('No such department!'); 
+END;
+
+5---------------------------------------------------------------------------------
+
+declare
+course_ID varchar(5);
+Begin
+course_ID:='&course_ID';
+delete from Course where courseID =course_ID;
+
+IF SQL%ROWCOUNT = 0 THEN
+    dbms_output.put_line('No such courseID!'); 
+END IF;
+END;
+
+6---------------------------------------------------------------------------------
+
+declare
+stud_ID varchar(5);
+var1 varchar(20);
+var2 varchar(20);
+var3 varchar(20);
+Begin
+stud_ID:='&stud_ID';
+select classID,Grade,gradeassigned into var1,var2,var3 from STUDENTSCHEDULE where studentID =stud_ID;
+dbms_output.put_line('ClassID: '||var1||'Grade:'||var2||'Grade Assigned:'||var3);
+END;
+
+7---------------------------------------------------------------------------------
+
+declare
+emp_ID varchar(5);
+var1 INTEGER;
+Begin
+update EMPLOYEE
+   set salary = case 
+                  when salary  > 15000 then salary * 1.15
+                end;
+EXCEPTION 
+   WHEN no_data_found THEN 
+      dbms_output.put_line('No such employee!'); 
+END;
+
+
+8---------------------------------------------------------------------------------
+
+9---------------------------------------------------------------------------------
+
+declare
+var1 INTEGER;
+Begin
+select count(*) into var1 from EMPLOYEE where GENDER='MALE';
+dbms_output.put_line(var1||' Males'); 
+END;
+
+
+10---------------------------------------------------------------------------------
+
+declare
+var1 varchar(25);
+Begin
+FOR i in (select classbuilding,classroom from classlocation where Seatingcapacity >200)
+LOOP
+dbms_output.put_line('Class Building:'||i.classbuilding||'  Class Room:'||i.classroom);
+END LOOP;
+END;
+
+
+11---------------------------------------------------------------------------------
+declare
+var1 varchar(25);
+i number;
+Begin
+ FOR i in 1..20   LOOP
+  IF MOD(i,2)!=0 THEN
+  select deptname into var1 from DEPARTMENT where DEPTNO=i;
+  DBMS_OUTPUT.put_line('NAME:'||var1);
+  END IF;
+ END LOOP;
+END;
+
+
+12---------------------------------------------------------------------------------
+
+declare
+var1 varchar(25);
+Begin
+select count(distinct courseID) into var1 from course;
+dbms_output.put_line(var1||' courses'); 
+END;

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Diagonal circles</title>
+</head>
+<body>
+<center>
+<canvas id="myCanvas" width="800" height="800" ></center>
+Your browser does not support the HTML5 canvas tag.</canvas>
+
+<script>
+for(var i=0;i<5;i++)
+{	var c = document.getElementById("myCanvas");
+	colors = ['#FFFFFF', '#D5D8DC', '#A4A4A4', '#585858','#2E2E2E'];
+	var ctx = c.getContext("2d");
+	ctx.beginPath();
+	ctx.arc(100+(i*100), 75+(i*100), 50, 0, 2 * Math.PI);
+	ctx.stroke();
+	ctx.fillStyle = colors[i];
+	ctx.fill();
+}
+</script> 
+
+</body>
+</html>

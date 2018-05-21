@@ -1,0 +1,33 @@
+<html>
+
+<head>
+<title>Assignment8</title>
+
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular.min.js"></script>
+<script src="/app.js"></script>
+</head>
+
+
+
+<body>
+	<h1>JSON creator</h1><br>
+	<h2>Hi User.....!!!</h2>
+	<div ng-app="myApp" ng-controller="myCtrl">
+		<p>
+			<span ng-bind="result"></span>
+		</p>
+		<p><button ng-click="convert()">Fetch JSON</button>
+		</p>
+		<p><button ng-click="convertxml()">Fetch XML</button>
+		</p>
+
+		<p><input type="text" ng-model="mid"> </input><button ng-click="fetchone(mid)">Fetch JSON</button>
+		<p>
+			<span ng-bind="result2"></span>
+		</p>
+		</p>
+	</div>
+
+</body>
+</html>

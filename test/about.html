@@ -1,0 +1,28 @@
+<br>
+<div class="row"> 
+<div class="col-sm-9">
+<div id="map" style="width:100%;height:400px"></div>
+<script>
+function initMap() {
+        var uluru = {lat: 18.5204, lng: 73.8567};
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 9,
+          center: uluru
+        });
+        var marker = new google.maps.Marker({
+          position: uluru,
+          map: map
+        });
+      }
+</script>
+
+<script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyACDA2i97_Zz86NaHVrUQ_erEyu49wzPG8&callback=initMap">
+    </script>
+</div>
+<div class=" well well-lg col-sm-3">
+<pre><b>Contact number <b>
+			1234567890
+			</pre>
+</div>
+</div>

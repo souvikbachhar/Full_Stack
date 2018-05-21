@@ -1,0 +1,55 @@
+<?xml version = "1.0"?>
+<project name = "Assignment3" default = "clean"> 
+	<path id = "master-classpath">
+		<fileset dir = "${web.dir}/WEB-INF/lib">
+		<include name = "*.jar"/>
+		</fileset>
+		<pathelement path = "${build.dir}"/>
+	</path>
+	
+	
+	<target name="init">
+
+		<echo>Target1</echo>
+		<property name = "src.dir" value = "src"/>
+		<property name = "web.dir" value = "war"/>
+		<property name = "build.dir" value = "${web.dir}/WEB-INF/classes"/>
+		<property name = "name" value = "fax"/>
+		<path id = "master-classpath">
+		<fileset dir = "${web.dir}/WEB-INF/lib">
+         <include name = "*.jar"/>
+		</fileset>
+		<pathelement path = "${build.dir}"/>
+		</path>
+	</target>
+	
+	<target name="prepare" depends="init">
+
+		<echo>Target2</echo>
+		<mkdir dir = "${build.dir}"/>
+      
+	  <javac destdir = "${build.dir}" source = "1.5" target = "1.5">
+         <src path = "${src.dir}"/>
+         <classpath refid = "master-classpath"/>
+      </javac>
+	</target>
+	
+	<target name="clean" depends="prepare">
+   <echo>Target3</echo>
+		<delete>
+         <fileset dir = "${build.dir}">
+            <include name = "**/*.class"/>
+         </fileset>
+		</delete>
+	</target>
+	
+	<target name="sendmail">
+	  <mail encoding="mime" mailhost="smtp.wipro.com" subject="[REPORT] ${build} on ${env} environment - Test report" tolist="abc@wipro.com">
+      <from address="abc@wipro.com"/>
+      <replyto address="abc@wipro.com"/>
+      <message>Some body message
+      </message>
+    </mail>
+	</target>
+	
+</project>

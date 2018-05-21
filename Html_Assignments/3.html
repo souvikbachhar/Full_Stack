@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Awesome Videos</title>
+<script>
+
+function Pause() { 
+var myVideo = document.getElementById("video1"); 
+    if (myVideo.paused!==true) 
+        myVideo.pause(); 
+} 
+
+function Play() { 
+var myVideo = document.getElementById("video1"); 
+    if (myVideo.paused) 
+        myVideo.play(); 
+} 
+	var colors = ["red", "blue", "green","yellow","white","grey"];
+    var colorIndex = 0;
+ function changeColor() {
+
+        var col = document.getElementById("div2");
+        if( colorIndex >= colors.length ) {
+            colorIndex = 0;
+        }
+        col.style.backgroundColor = colors[colorIndex];
+        colorIndex++;
+    }
+	 function changeColor1() {
+
+        var col = document.getElementById("div1");
+        if( colorIndex >= colors.length ) {
+            colorIndex = 0;
+        }
+        col.style.backgroundColor = colors[colorIndex];
+        colorIndex++;
+    }
+	
+</script>
+</head>
+
+<body>
+<div id="div1">
+<center><h1><label>Awesome Online Videos <img src="./Images/logo2.png"></label></h1></center>
+<h3 align="right"><button onclick="changeColor1();">Change background color</button></h3>
+</div>
+<div style="text-align:center" id="div2">
+  <h2>Video of the week</h2>
+  <video id="video1" width="500" >
+    <source src="./Images/1.mp4">
+    <!--<source src="mov_bbb.ogg" type="video/ogg">-->
+  </video>
+  <br>
+ <button onClick="Play()">Play</button>
+ <button onClick="Pause()">Pause</button>
+<br>
+<h3><button onclick="changeColor();">Change background color</button></h3>
+</div>
+</body>
+
+</html>

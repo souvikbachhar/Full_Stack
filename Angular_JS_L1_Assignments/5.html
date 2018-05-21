@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="./script/angular.min.js"></script>
+<style>
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+    width: 100%;
+    border: 1px solid #ddd;
+}
+
+th, td {
+    text-align: left;
+    padding: 16px;
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2
+}
+</style>
+</head>
+<body >
+<script>
+var app = angular.module('myApp', []);
+angular.module('myApp', []).controller('CDController', function($scope) {
+    $scope.CDParlourName="Yours Parlour";
+	$scope.CDParlourAddress="102, ABC colony, Mumbai 400064";
+	$scope.CDs = [
+        {CDId:'1',CDTitle:'Game1',CDLanguage:"English",CDPrice:'500'},
+        {CDId:'2',CDTitle:'Movie1',CDLanguage:"Hindi",CDPrice:'800'},
+        {CDId:'3',CDTitle:'Biography1',CDLanguage:"Bengali",CDPrice:'200'}
+    ];
+});
+</script>
+<div ng-app="myApp" ng-controller="CDController" >
+	<h1>{{CDParlourName}}</h1>
+	<h3>You can contact us at: <span>{{CDParlourAddress}}</span></h3>
+	<table >
+		<tr>
+		<th>ID</th>
+		<th>Title</th>
+		<th>Language</th>
+		<th>Price</th>
+		</tr>
+		<tr ng-repeat="x in CDs">
+		<td>{{x.CDId}}</td>
+		<td>{{x.CDTitle}}</td>
+		<td>{{x.CDLanguage}}</td>
+		<td>{{x.CDPrice}}</td>
+		</tr>
+	</table>
+
+</div>
+
+</body>
+</html>
+
+
+
+

@@ -1,0 +1,39 @@
+<html>
+
+<head>
+<title>Assignment6</title>
+
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular.min.js"></script>
+<script src="/app.js"></script>
+</head>
+
+
+
+<body>
+	<h1>Employee Managment App</h1><br> 
+	<div ng-app="myApp" ng-controller="myCtrl">
+		<table border="1px" cellpadding="5">
+  				<tr ng-repeat="x in emp">
+    			<td>{{ x.empId }}</td>
+    			<td><input type="text" ng-model="x.empName"></input></td>
+    			<td><input type="text" ng-model="x.empSalary" ></input></td>
+    			<td><button ng-click="updateemp(x.empId,x.empSalary)">Edit</button></td>
+    			<td><button ng-click="deleteemp(x.empId)">Delete</button></td>
+  				</tr>
+		</table>
+		<br>
+		<br>
+				<button ng-click="toggle()">Insert Data</button>
+					<p ng-show="myVar">
+					Employee ID : <input type=number ng-model="empID" required><br>
+					Employee Name: <input type=text ng-model="empName" required><br>
+					Employee Salary: <input type=number ng-model="empSalary" required><br><br>
+					<button ng-click="insertemp(empID,empName,empSalary)">Submit</button>
+					</p>
+		
+		</div>
+	
+
+</body>
+</html>

@@ -1,0 +1,30 @@
+1------------------------------------------------------------------------
+
+DECLARE 
+BEGIN 
+   insert into course values(1,1,'ABCS','WWWW',200);
+   EXCEPTION 
+    WHEN DUP_VAL_ON_INDEX  THEN
+       dbms_output.put_line('Duplicate Entry....!!!');
+END; 
+
+2------------------------------------------------------------------------
+
+DECLARE 
+BEGIN 
+   insert into DEPARTMENT values(561,'1111111111111111111111111','WWWW');
+   EXCEPTION 
+    WHEN VALUE_ERROR THEN
+       dbms_output.put_line('Value outside permisible limits!!!');
+END; 
+
+
+3------------------------------------------------------------------------
+
+DECLARE 
+BEGIN 
+   insert into DEPARTMENT values(561,'1111111111111111111111111','WWWW');
+   EXCEPTION 
+    WHEN others THEN
+       dbms_output.put_line('Something wrong happened!!!');
+END; 

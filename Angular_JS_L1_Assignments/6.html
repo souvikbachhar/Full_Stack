@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="./script/angular.min.js"></script>
+</head>
+<body >
+<script>
+var app = angular.module('myApp', []);
+angular.module('myApp', []).controller('CDController', function($scope) {
+    $scope.name="Amazon";
+	$scope.amount="10000";
+});
+</script>
+<div ng-app="myApp" ng-controller="CDController" >
+	<h1>{{name}}</h1>
+	<h4>Your Total bill is: Rs <span>{{amount}}</span></h4>
+	<h6>Have voucher code? Check Below</h6>
+	Voucher code:<!--<select ng-model="myVar">
+						<option value="CDMK1610">CDMK1610
+						<option value="CDMK1620">CDMK1620
+						<option value="CDMK1690">CDMK1690
+						<option value="Others">others
+				  </select>-->
+				  <input ng-model="myVar"></input>
+				  <div ng-switch="myVar" >
+  <div ng-switch-when="CDMK1610">
+     <h3>CDMK1610</h3>
+     <p>Congrats..!!..10% discount is applied</p>
+	 <p>After Discount Price(including GST): Rs {{amount*0.9}}</p>
+  </div>
+  <div ng-switch-when="CDMK1620">
+     <h3>CDMK1620</h3>
+     <p>Congrats..!!..20% discount is applied</p>
+	 <p>After Discount Price(including GST): Rs {{amount*0.8}}</p>
+  </div>
+  <div ng-switch-when="CDMK1690">
+     <h3>CDMK1690</h3>
+     <p>Congrats..!!..90% discount is applied</p>
+	 <p>After Discount Price(including GST): Rs {{amount*0.1}}</p>
+  </div>
+  <div ng-switch-default>
+  <p>No discount applied</p>
+  <p>Price(including GST): Rs {{amount}}</p>
+     </div>
+</div>
+<button >Continue</button>
+</div>
+
+</body>
+</html>
+
+
+
+

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<script src="./script/angular.min.js"></script>
+</head>
+<body onload="myFunction()">
+
+<div ng-app="myApp" ng-controller="myCtrl">
+Current Date<p>{{ today() | date }}</p>
+Last Modified Date <p id="demo"></p>
+</div>
+<script>
+var app = angular.module('myApp', []);
+app.controller('myCtrl', function($scope) {
+	$scope.today = function()
+	{return new Date();
+	}
+	});
+
+
+function myFunction() {
+    var x = document.lastModified;
+    document.getElementById("demo").innerHTML = x;
+}	
+</script>
+</body>
+</html>

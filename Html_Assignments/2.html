@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Xena Events</title>
+<script type = "text/javascript">
+          function displayNextImage() {
+              x = (x === images.length - 1) ? 0 : x + 1;
+              document.getElementById("himg").src = images[x];
+          }
+
+          function startTimer() {
+              setInterval(displayNextImage, 3000);
+          }
+
+          var images = [], x = -1;
+          images[0] = "./Images/1.jpg";
+          images[1] = "./Images/2.jpg";
+          images[2] = "./Images/3.jpg";
+	
+	function myFunction() {
+	
+    alert("Thanks for sharing details we will get back to you shortly...!!!");
+}
+	
+      </script>
+</head>
+
+<body onload="startTimer()">
+<img id="himg" src="./Images/1.jpg" width="1350" height="250">
+<center><img src="./Images/logo.png">
+<h3>Enter details to join us</h3>
+<form onsubmit="myFunction()">
+<div>
+    
+    <h3>Your name:<input id="name" type="text" pattern="[a-zA-Z][a-zA-Z ]*" title="Username should only contain letters. e.g. john" required/></h3>
+	<h3>Your Age :<input id="age" type="number" min="18" required/></h3>
+    <h3>Email ID : <input id="email" type="email" required/></h3>
+    <h3>Enter City: 
+	<select name="city" required>
+    <option value=""></option>
+    <option value="Rajkot">Rajkot</option>
+    <option value="Vizag">Vizag</option>
+    <option value="Banglore">Banglore</option>
+	</select>
+	</h3>
+	<input type="submit"  value="Submit">
+ </div>
+</form>
+</center>
+</body>
+
+</html>

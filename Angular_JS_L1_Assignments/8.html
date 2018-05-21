@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="./script/angular.min.js"></script>
+<style>
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+    width: 100%;
+    border: 1px solid #ddd;
+}
+
+th, td {
+    text-align: left;
+    padding: 16px;
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2
+}
+</style>
+</head>
+<body >
+<script>
+var a=1;
+var app = angular.module('myApp', []);
+app.controller('CDController', function($scope) {
+	$scope.num = [1];
+	$scope.generate=function()
+		{if(a<10)
+				{a=a+1;
+				$scope.num.push(a);
+				}
+			}	
+});
+</script>
+<h1>Play with tables</h1>
+<div ng-app="myApp" ng-controller="CDController" >
+<button ng-click=generate()>Generate tables of 5 </button>
+<div ng-repeat="x in num">
+<h3>– 5* {{x}} = {{5*	x}}</h3>
+</div>
+
+</div>
+
+</body>
+</html>
+
+
+
+

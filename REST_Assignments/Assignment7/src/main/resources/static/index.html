@@ -1,0 +1,30 @@
+<html>
+
+<head>
+<title>Assignment7</title>
+
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular.min.js"></script>
+<script src="/app.js"></script>
+</head>
+
+
+
+<body>
+	<h1>Banking App</h1><br>
+	<h2>Hi User.....!!!</h2>
+	<div ng-app="myApp" ng-controller="myCtrl">
+
+		<p>
+			<span ng-bind="result"></span>
+		</p>
+		<p><button ng-click="getBalance()">Check Balance</button>
+		</p>
+		<p><input type="number" ng-model="dep"/> <button ng-click="deposit(dep)">Deposit</button>
+		</p>
+		<p><input type="number" ng-model="wdraw"/> <button ng-click="withdraw(wdraw)">WithDraw</button>
+		</p>
+	</div>
+
+</body>
+</html>

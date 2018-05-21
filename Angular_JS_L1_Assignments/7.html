@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<script src="./script/angular.min.js"></script>
+<script src="./script/angular-route.js"></script>
+<style>
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+    width: 100%;
+    border: 1px solid #ddd;
+}
+
+th, td {
+    text-align: left;
+    padding: 16px;
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2
+}
+</style>
+</head>
+<body ng-app="myApp">
+
+<a href="#/!">Home</a>   <a href="#!red">All Cd's</a>  <a href="#!green">New Cd's</a>
+
+
+
+<div ng-view></div>
+<h3>Please go to directory, open shell and type "tiny-server" to enable routing</h3>
+<script>
+var app = angular.module("myApp", ["ngRoute"]);
+app.config(function($routeProvider) {
+    $routeProvider
+    .when("/", {
+        templateUrl : "home7.html"
+    })
+    .when("/red", {
+        templateUrl : "all7.html"
+    })
+    .when("/green", {
+        template : "<h1>New Cd's</h1>"
+    })
+});
+
+
+app.controller('CDController', function($scope) {
+    $scope.CDParlourName="Yours Parlour";
+	$scope.CDParlourAddress="102, ABC colony, Mumbai 400064";
+	$scope.CDs = [
+        {CDId:'1',CDTitle:'Game1',CDLanguage:"English",CDPrice:'500',CDRented:'5'},
+        {CDId:'2',CDTitle:'Movie1',CDLanguage:"Hindi",CDPrice:'800',CDRented:'5'},
+        {CDId:'3',CDTitle:'Biography1',CDLanguage:"Bengali",CDPrice:'200',CDRented:'7'},
+		{CDId:'4',CDTitle:'Game2',CDLanguage:"English",CDPrice:'500',CDRented:'3'},
+		{CDId:'5',CDTitle:'Game3',CDLanguage:"English",CDPrice:'500',CDRented:'2'},
+		{CDId:'6',CDTitle:'Biography2',CDLanguage:"Bengali",CDPrice:'200',CDRented:'7'},
+		{CDId:'7',CDTitle:'Movie2',CDLanguage:"English",CDPrice:'500',CDRented:'3'},
+		{CDId:'8',CDTitle:'Movie3',CDLanguage:"English",CDPrice:'500',CDRented:'2'}
+    ];
+});
+
+</script> 	
+</body>
+</html>

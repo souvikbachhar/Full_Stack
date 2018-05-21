@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script>
+function fetch()
+{
+	var arr=document.getElementById("vars").value;
+    var a=arr.split(",");
+	var n=document.getElementById("num").value;
+	var result;
+	if(a.length<n)
+	{	document.getElementById("result").innerHTML=a; 
+	}
+	else
+	{	result=a.splice(n,arr.length);
+		document.getElementById("result").innerHTML=result; 
+	}
+}
+</script>
+<title>Arrays</title>
+</head>
+
+<body align="center">
+<h1 >Welcome...!!!</h1>
+  <textarea rows="5" cols="50" id="vars"></textarea><br>
+	<i>Please enter numbers to be separated by ',' eg: 4,88,67,54</i><br><br>
+	<input type="number" id="num" required/> <input type="submit" onclick="fetch()"></button>
+	<h4 id="p"></h4><i id="result"></i>
+</html>

@@ -1,0 +1,203 @@
+1---------------------------------------------------------------------------------------------
+
+DECLARE 
+   e_sal NUMBER(7,2);
+   e_name VARCHAR2(30 BYTE);
+   CURSOR c_employee is 
+      SELECT (salary+comm),ename as totalsalary FROM employee where comm is not null; 
+BEGIN 
+   OPEN c_employee; 
+   LOOP 
+   FETCH c_employee into e_sal,e_name; 
+      EXIT WHEN c_employee%notfound; 
+      dbms_output.put_line(e_sal||' '||e_name); 
+   END LOOP; 
+   CLOSE c_employee; 
+END; 
+
+2---------------------------------------------------------------------------------------------
+
+DECLARE 
+   e_date varchar(20);
+   e_count VARCHAR2(20);
+   e_empno varchar(20);
+   e_ename VARCHAR2(20);
+   CURSOR c_employee is 
+      select TO_CHAR(HIREDATE,'MONTH'),count(*) from EMPLOYEE group by TO_CHAR(HIREDATE,'MONTH');
+   CURSOR c_details is 
+      select empno,ename from EMPLOYEE ;  
+BEGIN 
+   OPEN c_details; 
+   LOOP 
+   FETCH c_details into e_empno,e_ename; 
+      EXIT WHEN c_details%notfound; 
+      dbms_output.put_line(e_empno||' '||e_ename); 
+   END LOOP; 
+   CLOSE c_details;
+     dbms_output.put_line('-------------------');
+   OPEN c_employee; 
+   LOOP 
+   FETCH c_employee into e_date,e_count; 
+      EXIT WHEN c_employee%notfound; 
+      dbms_output.put_line(e_date||' '||e_count); 
+   END LOOP; 
+   CLOSE c_employee; 
+END; 
+
+3---------------------------------------------------------------------------------------------
+
+DECLARE 
+   c_id VARCHAR2(5 BYTE);
+   c_addfees NUMBER(9,2);
+   CURSOR c_course is 
+      select courseID,ADDITINAL_FEES from course
+      FOR update of ADDITINAL_FEES;
+BEGIN 
+   OPEN c_course; 
+   LOOP 
+   FETCH c_course into c_id,c_addfees; 
+      EXIT WHEN c_course%notfound; 
+      dbms_output.put_line(c_id||' '||c_addfees); 
+      update course
+              set ADDITINAL_FEES=case
+                                      when ADDITINAL_FEES <100 then ADDITINAL_FEES*1.1
+                                      when ADDITINAL_FEES >=100 then ADDITINAL_FEES*0.8
+                                      else ADDITINAL_FEES
+                                      end
+                                      WHERE CURRENT OF c_course;
+   END LOOP; 
+   CLOSE c_course;
+END; 
+
+4---------------------------------------------------------------------------------------------
+
+DECLARE 
+   c_room varchar(10);
+   c_schdID VARCHAR2(30);
+   c_schdes VARCHAR2(30);
+   c_schday VARCHAR2(30);
+   c_schstart VARCHAR2(30);
+   c_schddura VARCHAR2(30);
+   CURSOR c_class is 
+      select class.classroom,schedule_type.* from class join SCHEDULE_TYPE on class.SCHEDULEID=SCHEDULE_TYPE.SCHEDULEID where class.deptno = &a; 
+BEGIN 
+   OPEN c_class; 
+   LOOP 
+   FETCH c_class into c_room,c_schdID,c_schdes,c_schday,c_schstart,c_schddura; 
+      EXIT WHEN c_class%notfound; 
+      dbms_output.put_line(c_room||' '||c_schdID||' '||c_schdes||' '||c_schday||' '||c_schstart||' '||c_schddura); 
+   END LOOP; 
+   CLOSE c_class; 
+END; 
+
+5---------------------------------------------------------------------------------------------
+
+
+DECLARE 
+   e_empno NUMBER(38,0);
+   e_ename VARCHAR2(30 BYTE);
+   e_Job VARCHAR2(12 BYTE);
+   e_mgr NUMBER(38,0);
+   e_hiredate DATE;
+   e_salary NUMBER(7,2);
+   e_comm NUMBER(7,2);
+   e_deptno NUMBER(38,0);
+   e_gender VARCHAR2(12 BYTE);
+   CURSOR e_emp is 
+      select * from employee where GENDER='MALE';
+BEGIN 
+   OPEN e_emp; 
+   LOOP 
+   FETCH e_emp into e_empno,e_ename,e_job,e_mgr,e_hiredate,e_salary,e_comm,e_deptno,e_gender; 
+      EXIT WHEN e_emp%notfound; 
+      dbms_output.put_line(e_empno||' '||e_ename||' '||e_job||' '||e_mgr||' '||e_hiredate||' '||e_salary||' '||e_comm||' '||e_deptno||' '||e_gender); 
+   END LOOP; 
+   CLOSE e_emp; 
+END; 
+
+6---------------------------------------------------------------------------------------------
+
+DECLARE 
+   s_stud varchar2(20);
+   s_count VARCHAR2(12);
+   CURSOR s_stud is 
+      select city,count(*) from student group by city;
+BEGIN 
+   OPEN s_stud; 
+   LOOP 
+   FETCH s_stud into s_stud,s_count; 
+      EXIT WHEN s_stud%notfound; 
+      dbms_output.put_line(s_stud||' '||s_count); 
+   END LOOP; 
+   CLOSE s_stud; 
+END; 
+
+7---------------------------------------------------------------------------------------------
+
+DECLARE 
+   s_classbuild varchar2(20);
+   s_classroom VARCHAR2(12);
+   CURSOR s_stud is 
+      select classbuilding,classroom from classlocation where seatingcapacity>=200;
+BEGIN 
+   OPEN s_stud; 
+   LOOP 
+   FETCH s_stud into s_classbuild,s_classroom; 
+      EXIT WHEN s_stud%notfound; 
+      dbms_output.put_line(s_classbuild||' '||s_classroom); 
+   END LOOP; 
+   CLOSE s_stud; 
+END; 
+
+8---------------------------------------------------------------------------------------------
+
+DECLARE 
+   s_studID varchar2(20);
+   CURSOR s_stud is 
+      select studentID from studentschedule where grade='A';
+BEGIN 
+   OPEN s_stud; 
+   LOOP 
+   FETCH s_stud into s_studID; 
+      EXIT WHEN s_stud%notfound; 
+      dbms_output.put_line(s_studID); 
+   END LOOP; 
+   CLOSE s_stud; 
+END; 
+
+9---------------------------------------------------------------------------------------------
+
+DECLARE 
+   s_instID varchar2(20);
+   s_instname varchar2(20);
+   CURSOR s_stud is 
+      select instructor.instructorID,instructor.firstname from instructor join class on instructor.instructorID=class.instructorID;
+BEGIN 
+   OPEN s_stud; 
+   LOOP 
+   FETCH s_stud into s_instID,s_instname; 
+      EXIT WHEN s_stud%notfound; 
+      dbms_output.put_line(s_instID||' '||s_instname); 
+   END LOOP; 
+   CLOSE s_stud; 
+END; 
+
+
+10---------------------------------------------------------------------------------------------
+
+DECLARE 
+   s_studID varchar2(20);
+   s_classID varchar2(20);
+   s_grade varchar2(20);
+   s_gradeassigned varchar2(20);
+   CURSOR s_stud is 
+      select * from studentschedule ;
+BEGIN 
+   OPEN s_stud; 
+   LOOP 
+   FETCH s_stud into s_studID,s_classID,s_grade,s_gradeassigned; 
+      EXIT WHEN s_stud%notfound; 
+      dbms_output.put_line(s_studID||' '||s_classID||' '||s_grade||' '||s_gradeassigned); 
+   END LOOP; 
+   CLOSE s_stud; 
+END; 

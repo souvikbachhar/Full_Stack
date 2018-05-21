@@ -1,0 +1,12 @@
+<?xml version = "1.0"?>
+<project name = "Hello World Project" default = "info1">
+   <target name = "info1">
+      <echo>Hello1</echo>
+   </target>
+   <target name = "info2">
+      <echo>Hello2</echo>
+   </target>
+   <target name = "info3">
+      <echo>Hello3</echo>
+   </target>
+</project>

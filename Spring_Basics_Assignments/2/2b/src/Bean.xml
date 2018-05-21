@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="country1" class = "com.souvik.assign3.Country">
+	<property name="countryID" value="1"></property>
+	<property name="countryName" value="CountryA"></property>
+	</bean>
+	
+	<bean id="country2" class = "com.souvik.assign3.Country">
+	<property name="countryID" value="2"></property>
+	<property name="countryName" value="CountryB"></property>
+	</bean>
+	
+	<bean id="player" class="com.souvik.assign3.Player" scope="prototype">
+	<property name="c" ref="country"></property>
+	</bean>
+
+	<bean id="country" class="com.souvik.assign3.Country"></bean>
+
+</beans>

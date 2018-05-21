@@ -1,0 +1,25 @@
+<project>
+
+    <target name="clean">
+        <delete dir="build"/>
+    </target>
+
+    <target name="compile">
+        <mkdir dir="build/classes"/>
+        <javac srcdir="music" destdir="build/classes"/>
+    </target>
+
+    <target name="prepare">
+        <mkdir dir="build/jar"/>
+        <jar destfile="build/jar/Music.jar" basedir="build/classes">
+            <manifest>
+                <attribute name="Main-Class" value="Guitar"/>
+            </manifest>
+        </jar>
+    </target>
+
+    <target name="run">
+        <java jar="build/jar/Music.jar" fork="true"/>
+    </target>
+
+</project>

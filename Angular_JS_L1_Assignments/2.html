@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="./script/angular.min.js"></script>
+</head>
+<body>
+
+<div ng-app="myApp" ng-controller="myCtrl" class="jumbotron">
+<form name="myForm">
+Name: <input ng-model="name" name="name">
+City: <input ng-model="city" name="city">
+
+<p>The name is {{ name| uppercase }}</p>
+<p>The city is {{ city| uppercase }}</p>
+
+<p ng-show="myForm.name.$dirty && myForm.city.$dirty" >Date = {{ today | date }}</p>
+</form>
+</div>
+<script>
+var app = angular.module('myApp', []);
+app.controller('myCtrl', function($scope) {
+    $scope.name = "";
+	$scope.city = "";
+	$scope.today = new Date();
+	
+	});
+</script>
+</body>
+</html>

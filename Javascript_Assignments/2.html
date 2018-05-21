@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Javascript object sorting</title>
+
+
+</head>
+<body>
+
+<h2>JavaScript Array Sort</h2>
+
+<p id="demo"></p>
+
+
+<h2>SORT BY:-</h2>
+
+<form>
+  <input type="radio" name="jsort" checked onclick="location.reload()"> Default
+  <input type="radio" name="jsort" onclick="myname()"> Name
+  <input type="radio" name="jsort" onclick="myecode()"> Emp code
+  <input type="radio" name="jsort" onclick="myage()"> Age
+  <input type="radio" name="jsort" onclick="myretireddate()"> Retired date
+  <input type="radio" name="jsort" onclick="mysalary()"> Salary
+</form> 
+<script>
+var employees=[
+{name:"George", ecode:56,age:32, retiredate:"March 12, 2014",salary:25000},
+	{name:"Edward", ecode:98,age:17, retiredate:"June 2, 2023",salary:45000},
+	{name:"Christine", ecode:1,age:58, retiredate:"December 20, 2036",salary:23000},
+	{name:"Sarah", ecode:45,age:62, retiredate:"April 30, 2020",salary:33000}
+]
+var myJSON = JSON.stringify(employees);
+document.getElementById("demo").innerHTML = myJSON;
+
+function myage()
+{employees.sort(function(a, b){ // sort object by age field
+	return a.age-b.age
+})
+var myJSON = JSON.stringify(employees);
+document.getElementById("demo").innerHTML = myJSON;
+}
+function myecode()
+{employees.sort(function(a, b){ // sort object by age field
+	return a.ecode-b.ecode
+})
+var myJSON = JSON.stringify(employees);
+document.getElementById("demo").innerHTML = myJSON;
+}
+function mysalary()
+{employees.sort(function(a, b){ // sort object by age field
+	return a.salary-b.salary
+})
+var myJSON = JSON.stringify(employees);
+document.getElementById("demo").innerHTML = myJSON;
+}
+function myname()
+{employees.sort(function(a, b){ // sort object by age field
+	var nameA=a.name.toLowerCase(), nameB=b.name.toLowerCase()
+	if (nameA < nameB) //sort string ascending
+ 		return -1 
+	if (nameA > nameB)
+		return 1
+	return 0
+})
+var myJSON = JSON.stringify(employees);
+document.getElementById("demo").innerHTML = myJSON;
+}
+function myretireddate()
+{employees.sort(function(a, b){ // sort object by age field
+	var dateA=new Date(a.retiredate), dateB=new Date(b.retiredate)
+	return dateA-dateB
+})
+var myJSON = JSON.stringify(employees);
+document.getElementById("demo").innerHTML = myJSON;
+}
+</script>
+
+
+</body>
+</html>

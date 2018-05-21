@@ -1,0 +1,22 @@
+<div ng-app="myApp" ng-controller="CDController" >
+	<h3>{{CDParlourName}}</h3>
+	<h4>You can contact us at: <span>{{CDParlourAddress}}</span></h4>
+	<h4>Top 5 CDs rented for the week </h4>
+	<table >
+		<tr>
+		<th>ID</th>
+		<th>Title</th>
+		<th>Language</th>
+		<th>Price</th>
+		<th>Rented(times)</th>
+		</tr>
+		<tr ng-repeat="x in CDs">
+		<td>{{x.CDId}}</td>
+		<td>{{x.CDTitle}}</td>
+		<td>{{x.CDLanguage}}</td>
+		<td>{{x.CDPrice}}</td>
+		<td>{{x.CDRented}}</td>
+		</tr>
+	</table>
+
+</div>

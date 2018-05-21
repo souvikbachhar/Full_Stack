@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<title>Gallery</title>
+<script>
+var i=1;
+function nchange(){
+
+if(i<6)
+{
+++i;
+document.getElementById("image").src="./images/"+i+".jpg";
+document.getElementById("pbutton").disabled=false;
+if(i==6)
+{document.getElementById("nbutton").disabled=true;
+}
+}
+else{
+document.getElementById("nbutton").disabled=true;
+}
+
+}
+function pchange()
+{
+if(i>1)
+{--i;
+	document.getElementById("image").src="./images/"+i+".jpg";
+	document.getElementById("nbutton").disabled=false;
+	if(i==1)
+	{document.getElementById("pbutton").disabled=true;
+	}
+}
+else{
+document.getElementById("pbutton").disabled=true;
+}
+}
+</script>
+<body align="center">
+<h1>Welcome to Gallery</h1>
+<img id="image" src="./images/1.jpg" height="400" width="500"></img>
+<br>
+<br>
+<button onclick="pchange()" id="pbutton" disabled>Previous</button>   <button onclick="nchange()" id="nbutton" >Next</button>
+</body>
+</html>

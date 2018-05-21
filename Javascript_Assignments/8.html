@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script>
+function calc()
+{
+
+var option = document.createElement("option");
+option.text=document.getElementById("details").value;
+document.getElementById("myselect").add(option);
+document.getElementById("f").elements.item(0).value=""; 
+alert("Count in dropdown : "+document.getElementById("myselect").length)
+}
+function rem()
+{   var x = document.getElementById("myselect");
+    x.remove(x.selectedIndex);
+	alert("Count in dropdown : "+document.getElementById("myselect").length)
+}
+</script>
+<title>Dropdown count</title>
+</head>
+
+<body align="center">
+<h1>Welcome...!!!</h1>
+<h3>Enter value to insert in dropdown</h3>
+<form id="f" action="#" onsubmit="calc()">
+<input id="details" required></input>  	<input type="submit"></input>
+</form>
+<br><br>
+
+<select id="myselect" size="10" width="10">
+<option>Default</option>
+</select>  <button onclick="rem()">Remove</button>
+
+<br>
+</body>
+</html>

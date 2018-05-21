@@ -1,0 +1,32 @@
+<html>
+
+<head>
+<title>Assignment2</title>
+
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular.min.js"></script>
+<script src="/app.js"></script>
+</head>
+
+
+
+<body>
+	<h1>Date Calculator</h1>
+
+	<div ng-app="myApp" ng-controller="myCtrl">
+		<p>
+			Select your DOB: <input type="date" ng-model="date1" >
+		</p>
+		<p>
+			Select Target Date :  <input type="date" ng-model="date2" >
+		</p> 
+		<p>
+			<span ng-bind="result"></span>
+		</p>
+		<p>
+			<button ng-click="check(date1,date2)">Submit</button>
+		</p>
+	</div>
+
+</body>
+</html>

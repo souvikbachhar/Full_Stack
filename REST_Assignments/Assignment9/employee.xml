@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<movie movieId="1">
+    <movieActor>AA</movieActor>
+    <movieCollection>35.0</movieCollection>
+    <movieName>ABC</movieName>
+</movie>

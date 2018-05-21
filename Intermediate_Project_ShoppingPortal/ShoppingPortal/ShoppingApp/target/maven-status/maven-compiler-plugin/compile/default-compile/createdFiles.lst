@@ -1,0 +1,7 @@
+com\souvik\mapper\CategoryMapper.class
+com\souvik\controller\MyController.class
+com\souvik\repository\myRepository.class
+com\souvik\config\myDB.class
+com\souvik\service\myService.class
+com\souvik\dto\ProductCategory.class
+com\souvik\AppInit.class

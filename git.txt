@@ -1,0 +1,8 @@
+git config --global user.name "SO336674"
+git config --global user.email "souvik.bachhar@wipro.com"
+git clone copy_link_here
+
+git status
+git add .
+git commit -m .
+git push -u origin master

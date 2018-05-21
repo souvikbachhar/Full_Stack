@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Sorting</title>
+<script>
+function bubble_Sort()
+{ var arr=document.getElementById("vars").value;
+    var a=arr.split(",");
+	var swapp;
+    var n = a.length-1;
+    var x=a;
+    do {
+        swapp = false;
+        for (var i=0; i < n; i++)
+        {
+            if (x[i] > x[i+1])
+            {
+               var temp = x[i];
+               x[i] = x[i+1];
+               x[i+1] = temp;
+               swapp = true;
+            }
+        }
+        n--;
+    } while (swapp);
+ document.getElementById("p").innerHTML=x; 
+}
+function Selection_Sort( compare_Function) {
+	var arr=document.getElementById("vars").value.split(",");
+  function compare(a, b) {
+   return a - b;
+   } 
+  var min = 0;
+  var index = 0;
+  var temp = 0;
+  compare_Function = compare_Function || compare;
+  for (var i = 0; i < arr.length; i += 1) {
+    index = i;
+    min = arr[i];
+    for (var j = i + 1; j < arr.length; j += 1) {
+      if (compare_Function(min, arr[j]) > 0) {
+        min = arr[j];
+        index = j;
+      }
+    }
+    temp = arr[i];
+    arr[i] = min;
+    arr[index] = temp;
+  }
+  document.getElementById("p").innerHTML=arr; 
+}
+
+
+
+</script>
+
+</head>
+<body align="center">
+<h1>Sorting via different algorithms</h1>
+<textarea rows="5" cols="50" id="vars"></textarea><br>
+	<i>Please enter numbers to be separated by ',' eg: 4,88,67,54</i><br><br>
+<button onclick="bubble_Sort()">Bubble Sort</button>    <button onclick="Selection_Sort(function(a, b) { return a - b; })">Quick Sort</button>   <button onclick="location.reload()">Reset</button><br><br>
+<h4 id="p"></h4><i id="result"></i>
+</body>
+</html>

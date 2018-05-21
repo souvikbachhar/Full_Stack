@@ -1,0 +1,30 @@
+<html>
+
+<head>
+<title>Assignment3</title>
+
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular.min.js"></script>
+<script src="/app.js"></script>
+</head>
+
+
+
+<body>
+	<h1>My App</h1>
+
+	<div ng-app="myApp" ng-controller="myCtrl">
+		<p>
+			Enter number: <input type="number" ng-model="num" >
+		</p>
+
+		<p>
+			<span ng-bind="result"></span>
+		</p>
+		<p>
+			<button ng-click="check(num)">Submit</button>
+		</p>
+	</div>
+
+</body>
+</html>

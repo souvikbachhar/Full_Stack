@@ -1,0 +1,31 @@
+<html>
+
+<head>
+<title>Assignment8</title>
+
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular.min.js"></script>
+<script src="/app.js"></script>
+</head>
+
+
+
+<body>
+	<h1>JSON creator</h1><br>
+	<h2>Hi User.....!!!</h2>
+	<div ng-app="myApp" ng-controller="myCtrl">
+		<p>
+			Title :<input type="text" ng-model="title"/>
+		</p>
+		<p>
+			Singer :<input type="text" ng-model="singer"/>
+		</p>
+		<p>
+			<span ng-bind="result"></span>
+		</p>
+		<p><button ng-click="convert(title,singer)">convert</button>
+		</p>
+	</div>
+
+</body>
+</html>

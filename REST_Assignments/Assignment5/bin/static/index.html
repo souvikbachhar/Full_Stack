@@ -1,0 +1,33 @@
+<html>
+
+<head>
+<title>Assignment5</title>
+
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular.min.js"></script>
+<script src="/app.js"></script>
+</head>
+
+
+
+<body>
+	<h1>My App</h1>
+
+	<div ng-app="myApp" ng-controller="myCtrl">
+		<p>
+			First Number : <input type="number" ng-model="num1" >
+		</p>
+		<p>
+			Second Number : <input type="number" ng-model="num2" >
+		</p>
+		<p>
+			<span ng-bind="result"></span>
+		</p>
+		<p><button ng-click="add(num1,num2)">ADD</button>
+		</p>
+		<p><button ng-click="subtract(num1,num2)">SUB</button>
+		</p>
+	</div>
+
+</body>
+</html>

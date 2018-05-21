@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Stock Trading APP</title>
+<script>
+function myFunction() {
+	var a=document.getElementById("Ticker").value;
+	var b=document.getElementById("Quantity").value;
+    alert("Thanks for buying "+b+" stocks of Ticker : "+ a);
+}
+</script>
+</head>
+
+<body>
+<center><strong><h1>Welcome To Home page of Stock Trading APP....!!!</h1></strong>
+</br>
+<h2><b>Current Price of Stocks</b></h2>
+<br>
+<table border=1>
+<tr><th>TICKER</th><th>PRICE</th></tr>
+<tr><td>WIPRO</td><td>298.45</td></tr>
+<tr><td>INFY</td><td>949.95</td></tr>
+<tr><td>TCS</td><td>2713.70</td></tr>
+<tr><td>TECHM</td><td>485.85</td></tr>
+</table>
+<h1><b>Stock Trading</b></h1>
+<form onsubmit="myFunction()">
+<table border=1>
+<tr><td>Ticker:</td><td><input type="text" required id="Ticker"></input></td></tr>
+<tr><td>Quantity:</td><td><input type="number" min="10" max="100" step="10" required id="Quantity"></input></td></tr>
+<tr><td><input type="submit"  value="Submit"></td></tr>
+</table>
+</form>
+</center>
+</body>
+
+</html>
