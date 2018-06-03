@@ -1,0 +1,142 @@
+<!doctype html>
+<html>
+<head>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.0/angular.min.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.0/angular-route.js"></script>
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css"
+	integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4"
+	crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+	integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+	crossorigin="anonymous"></script>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"
+	integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ"
+	crossorigin="anonymous"></script>
+<script
+	src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"
+	integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm"
+	crossorigin="anonymous"></script>
+<link rel="stylesheet"
+	href="https://use.fontawesome.com/releases/v5.0.10/css/all.css"
+	integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg"
+	crossorigin="anonymous">
+<script type="text/javascript"
+	src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.1/angular-cookies.js"></script>
+<script src="./scripts/app.js"></script>
+<title>Welcome to BankingApp</title>
+</head>
+<body ng-app="myApp" ng-controller="myCtrl">
+	<nav class="navbar navbar-dark bg-dark">
+		<a class="navbar-brand" href="#">BankingApp</a>
+	</nav>
+	<hr>
+	<h3 align="center">Welcome to Bank Home</h3>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-4"></div>
+			<div class="col-md-4">
+				<div class="form-group">
+					<form>
+						<div>
+						<label>User Name : </label><input class="form-control"  ng-model="x.username" ></input>
+						</div>
+						<div>
+						<label>Password : </label><input class="form-control" type="password"  ng-model="x.userpassword" ></input>
+						</div> 
+						<div>
+						<label>Bank : </label>
+						<div class="dropdown">
+							<select class="form-control" ng-model="x.bank">
+								<option value="Select">Select</option>
+								<option value="SBI">SBI</option>
+								<option value="ICICI">ICICI</option>
+								<option value="HDFC">HDFC</option>
+							</select>
+						</div>
+						</div>
+						<div style="color:red"><a>{{loginstatus}}</a></div>
+						<br>
+						<div>
+						<button type="submit" class="btn btn-primary" ng-click="login(x)">Login</button>
+						<button type="submit" class="btn btn-danger" data-toggle="modal" data-target="#forgotpwdModal">Forgot Password</button>
+						</div>
+						<br>
+						<div>
+						<button type="submit" class="btn btn-success" data-toggle="modal" data-target="#registerModal">SignUp</button>
+						</div>
+				</form>
+				</div>
+				
+			</div>
+		</div>
+		<div class="col-md-4"></div>
+	</div>
+	</div>
+	<!-- Modal -->
+<div class="modal fade" id="registerModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Sign Up..!!</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+       <div class="form-group">
+		<label for="InputEmail1">Email address</label>
+		<input type="email" class="form-control" id="InputEmail1"  placeholder="Enter email">
+		<label for="InputUname">User Name</label>
+		<input type="email" class="form-control" id="uname"  placeholder="Enter uname">
+		<label for="Password">Password</label>
+		<input type="password" class="form-control" id="InputPassword1" placeholder="Password">
+		<label for="Password">Confirm Password</label>
+		<input type="password" class="form-control" id="ConfirmPassword1" placeholder="Password">
+		<label>Bank : </label>
+						<div class="dropdown">
+							<select class="form-control">
+								<option value="Select">Select</option>
+								<option value="SBI">SBI</option>
+								<option value="ICICI">ICICI</option>
+								<option value="HDFC">HDFC</option>
+							</select>
+						</div>
+		<button type="button" class="btn btn-success" >
+			Sign up
+		</button>
+		</div>
+      </div>
+      
+    </div>
+  </div>
+</div>
+
+<!-- Forgot password modal-->
+<div class="modal fade" id="forgotpwdModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Reset Credentials</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+       <label for="InputEmail1">Email address</label>
+		<input type="email" class="form-control" id="RInputEmail1"  placeholder="Enter email">
+      </div>
+      <div class="modal-footer">
+
+        <button type="button" class="btn btn-primary">Submit</button>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

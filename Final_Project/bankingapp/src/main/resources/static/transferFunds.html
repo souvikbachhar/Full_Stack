@@ -1,0 +1,26 @@
+<div ng-app="myApp" ng-controller="transferfunds"><h3>Transfer funds</h3>
+<div  >
+<div>
+<label style="width:200px">Reciever's Name</label><input type="text" ng-model="u.uname" ng-show="!u.searchresult"><label style="width:200px" ng-show="u.searchresult">{{u.uname}}</label></input>
+</div>
+<div>
+	<label style="width:200px">Reciever's Bank</label>
+	<select ng-model="u.ubank" ng-show="!u.searchresult">
+								<option value="SBI">SBI</option>
+								<option value="ICICI">ICICI</option>
+								<option value="HDFC">HDFC</option>
+	</select>
+	<label style="width:200px" ng-show="u.searchresult">{{u.ubank}}</label>					
+	<div style="color:red"><a>{{loginstatus}}</a></div>
+<button type="submit" ng-click="usersearch(u)" ng-show="!u.searchresult">Search</button>	
+<div ng-show="u.searchresult">
+<label style="width:200px">Current Balance : <b>&#8377 {{userbalance}}</b></label>
+<br>
+<label style="width:200px">Amount to be Transferred</label>
+<input type="text" ng-model="u.transferamount" ng-show="!transactionresult"><label ng-show="transactionresult">{{u.transferamount}}</label>
+<button type="submit" ng-click="transfermoney(u)" ng-show="transactionresult" >Send Money</button>	
+<div style="color:red"><a>{{balanceerror}}</a></div>
+</div>
+</div>
+</div>
+</div>
